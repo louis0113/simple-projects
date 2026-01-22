@@ -24,13 +24,13 @@ func main() {
 
 	for {
 
-		fmt.Printf("Please select the difficulty level:\n1. Easy (10 chances)\n2. Medium (5 chances)\n3. Hard (3 chances)\n\n")
+		fmt.Printf("Please select the difficulty level:\n1. Easy (10 chances)\n2. Medium (5 chances)\n3. Hard (3 chances)\n")
 
 		for {
 
 			fmt.Print("Enter your choice: ")
 
-			fmt.Scanln(&level)
+			fmt.Scan(&level)
 
 			switch level {
 			case 1:
@@ -72,17 +72,21 @@ func main() {
 
 		}
 
-		fmt.Println("\n\nAre you  want continue the game? (N/Y)): ")
+		for {
+			fmt.Print("\n\nAre you  want continue the game? (N/y)): ")
 
-		fmt.Scan(&message)
+			fmt.Scan(&message)
 
-		switch message {
-		case `N`:
-			status = true
-		case `Y`:
-			status = false
-		default:
-			fmt.Printf("Don't recognize the output %q \nTry again\n\n", message)
+			if message == `N` || message == `n` {
+				status = true
+				break
+			} else if message == `Y` || message == `y` {
+				status = false
+				break
+			} else {
+				fmt.Printf("Don't recognize the output %q!Try again", message)
+			}
+
 		}
 
 		if status {
